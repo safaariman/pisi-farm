@@ -2,5 +2,6 @@
 """ Created by Safa Arıman on 2/15/19 """
 from farm.models.repository import Repository
 from farm.models.package import Package
+from farm.models.job import Job
 
 __author__ = 'safaariman'
