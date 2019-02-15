@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-15 14:34+0000\n"
+"POT-Creation-Date: 2019-02-15 20:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,6 +24,22 @@ msgstr "Oluşturulma Tarihi"
 #: farm/base/model.py:11
 msgid "Updated At"
 msgstr "Güncellenme Tarihi"
+
+#: farm/models/package.py:11
+msgid "Package Name"
+msgstr "Paket Adı"
+
+#: farm/models/package.py:12
+msgid "Package Description"
+msgstr "Paket Açıklaması"
+
+#: farm/models/package.py:16
+msgid "Package"
+msgstr "Paket"
+
+#: farm/models/package.py:17
+msgid "Packages"
+msgstr "Paketler"
 
 #: farm/models/repository.py:11
 msgid "Repository Name"
