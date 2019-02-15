@@ -1,0 +1,20 @@
+[
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$120000$0iFTxOwXwlLl$wDwoxpaVSdhUoFiHFiJGaq09YrE8QRLNHJUZc1uARHs=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "pisi",
+        "first_name": "Pisi",
+        "last_name": "Linux",
+        "email": "pisi@pisilinux.org",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2019-02-15T11:54:13.467Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
