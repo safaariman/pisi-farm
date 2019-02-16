@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'farm',
 ]
 
@@ -104,6 +105,12 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
+LANGUAGES = (
+        ('tr', 'Turkish'),
+        ('en', 'English'),
+    )
+
+
 LANGUAGE_CODE = 'tr'
 
 TIME_ZONE = 'UTC'
@@ -119,3 +126,33 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Rest Framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework_json_api.pagination.JsonApiPageNumberPagination',
+    'PAGE_SIZE': 20,
+    'EXCEPTION_HANDLER': 'rest_framework_json_api.exceptions.exception_handler',
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework_json_api.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+    ),
+    'DEFAULT_FILTER_BACKENDS': (
+        'url_filter.integrations.drf.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+        'rest_framework.filters.SearchFilter',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework_json_api.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+    'DEFAULT_METADATA_CLASS': 'rest_framework_json_api.metadata.JSONAPIMetadata',
+}
