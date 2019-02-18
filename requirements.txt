@@ -5,11 +5,13 @@ celery==4.2.1
 django-url-filter==0.3.12
 django==2.1.7
 djangorestframework-jsonapi==2.7.0
+djangorestframework-jwt==1.11.0
 djangorestframework==3.9.1
 enum-compat==0.0.2        # via django-url-filter
 inflection==0.3.1         # via djangorestframework-jsonapi
 kombu==4.3.0              # via celery
 psycopg2-binary==2.7.7
+pyjwt==1.7.1              # via djangorestframework-jwt
 python-decouple==3.1
 pytz==2018.9              # via celery, django
 six==1.12.0               # via django-url-filter, djangorestframework-jsonapi
