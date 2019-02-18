@@ -10,6 +10,7 @@ djangorestframework-jsonapi==2.7.0
 djangorestframework-jwt==1.11.0
 djangorestframework==3.9.1
 enum-compat==0.0.2        # via django-url-filter
+gunicorn==19.9.0
 inflection==0.3.1         # via djangorestframework-jsonapi
 kombu==4.3.0              # via celery
 psycopg2-binary==2.7.7
