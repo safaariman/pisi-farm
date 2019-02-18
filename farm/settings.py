@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import django_heroku
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -25,6 +26,8 @@ SECRET_KEY = config('SECRET_KEY', cast=str)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', False, cast=bool)
+
+HEROKU = config('HEROKU', False, cast=bool)
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pisifarm.herokuapp.com', ]
 
@@ -157,3 +160,8 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_METADATA_CLASS': 'rest_framework_json_api.metadata.JSONAPIMetadata',
 }
+
+# Heroku Settings
+
+if HEROKU:
+    django_heroku.settings(locals())

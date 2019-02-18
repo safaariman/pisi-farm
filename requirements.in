@@ -6,3 +6,4 @@ djangorestframework-jsonapi
 django-url-filter
 python-decouple
 celery
+django-heroku
