@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+
+import dj_database_url
 import django_heroku
 from decouple import config
 
@@ -53,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'farm.urls'
@@ -165,4 +168,5 @@ REST_FRAMEWORK = {
 # Heroku Settings
 
 if HEROKU:
+    DATABASES['default'] = dj_database_url.config()
     django_heroku.settings(locals())
