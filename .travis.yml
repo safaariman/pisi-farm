@@ -1,11 +1,15 @@
 language: python
 python:
-- "3.6"
-- "3.7"
+  - "3.6"
+  - "3.7"
+
+env:
+  - DEBUG=True
+  - SECRET_KEY=secret
 
 install:
-- pip install pip-tools
-- pip-sync
+  - pip install pip-tools
+  - pip-sync
 
 script:
-- python manage.py test
+  - python manage.py test
