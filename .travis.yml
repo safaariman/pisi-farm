@@ -1,15 +1,16 @@
 language: python
 python:
-  - "3.6"
-
+- '3.6'
 env:
-  - DEBUG=True SECRET_KEY=secret
-
+- DEBUG=True SECRET_KEY=secret
 install:
-  - pip install pip-tools
-  - pip-sync
-  - pip install safety
-
+- pip install pip-tools
+- pip-sync
+- pip install safety
 script:
-  - safety check
-  - python manage.py test
+- safety check
+- python manage.py test
+deploy:
+  provider: heroku
+  api_key:
+    secure: PHZipnmR4WcGCXPHABxsB4iKIeJ3tbGYTnjqirv32k29i7UiQE+o2r3a2vW1LB59e4Urgh1zRvuckZUxq+VuZ+LnjvyTZqAnraQWnToQxBJ7MJRcF30/9op/gtqilVTEYcbfPS2ZeD3qMMntcZdPSo7gYwQxKmJq27Oh3cWLclTs4W2mxL1B+CKi76cwAmj7vElHeIlEWVusRH5/pJKYCiD0cdxsUJ8h0xZrv0KGgzGO2Sy1LyF9LQVsgXS3eZ0DXblKET25b1rX5k4DaSkoryo73f3AQt9ra3hHwfUdZNFIwgrOmNGK3/R29GwDfsUUKFuCuWp9y2Ps57fXfGFkWj8V0v6LMKTa1G9xV+0i/qHDsrRkXUO2gkqiIfoeHJYoXA6/okRAnxuHdNPbvnyarron0AO/eO8+onO8RCcqZ0/oGap1j53Mm+l0WN8JwyZYDGOnZV7B72ZcaBd+7ccHzMQcApoZgGyB4jkW1Rsk2DdY18ue3crXaulORcix5rXGVjdJZLCALfiPyQwv1dxS2RThnso2yiD3hyaOKbqmvec1QWHCeuGlUb2YADlrYThL49Xqx4pPXlXKk9Z+4FhMhHx9abV0CjMg8ZaEaEAlb3c5LuMaoWp40zldCXnYjHyexbRztRJsImrRUd7yp/VURvNhuKVF5SoW9R8fooddKWw=
