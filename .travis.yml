@@ -8,6 +8,8 @@ env:
 install:
   - pip install pip-tools
   - pip-sync
+  - pip install safety
 
 script:
+  - safety check
   - python manage.py test
