@@ -1,11 +1,9 @@
 language: python
 python:
   - "3.6"
-  - "3.7"
 
 env:
-  - DEBUG=True
-  - SECRET_KEY=secret
+  - DEBUG=True SECRET_KEY=secret
 
 install:
   - pip install pip-tools
