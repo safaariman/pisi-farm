@@ -16,7 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from farm.rest.views.github import GitHubEventAPIView
+from farm.rest.views.gitlab import GitLabEventAPIView
+from farm.rest.views.bitbucket import BitbucketEventAPIView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('farm.rest.urls'))
+    path('api/farm/', include('farm.rest.urls')),
+    path('hooks/github/<str:hash>/', GitHubEventAPIView.as_view()),
+    path('hooks/gitlab/<str:hash>/', GitLabEventAPIView.as_view()),
+    path('hooks/bitbucket/<str:hash>/', BitbucketEventAPIView.as_view()),
 ]

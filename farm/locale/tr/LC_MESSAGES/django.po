@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-15 22:35+0000\n"
+"POT-Creation-Date: 2019-02-22 06:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: farm/admin/__init__.py:12 farm/admin/__init__.py:13
+#: farm/admin/__init__.py:13 farm/admin/__init__.py:14
 msgid "Pisi Farm Administration Console"
 msgstr "Pisi Çiftlik Yönetim Konsolu"
 
@@ -28,6 +28,50 @@ msgstr "Oluşturulma Tarihi"
 #: farm/base/model.py:11
 msgid "Updated At"
 msgstr "Güncellenme Tarihi"
+
+#: farm/models/event.py:14
+msgid "Payload"
+msgstr "Veri"
+
+#: farm/models/event.py:15
+msgid "Meta"
+msgstr "Meta"
+
+#: farm/models/event.py:16 farm/models/hook.py:50
+msgid "Hook"
+msgstr "Hook"
+
+#: farm/models/event.py:20
+msgid "Event"
+msgstr "Olay"
+
+#: farm/models/event.py:21
+msgid "Events"
+msgstr "Olaylar"
+
+#: farm/models/hook.py:27
+msgid "Source"
+msgstr "Kaynak"
+
+#: farm/models/hook.py:28
+msgid "URL Hash"
+msgstr "Karmaşık URL"
+
+#: farm/models/hook.py:29
+msgid "Secret"
+msgstr "Parola"
+
+#: farm/models/hook.py:30
+msgid "Last Trigger"
+msgstr "Son Tetiklenme"
+
+#: farm/models/hook.py:31
+msgid "Active"
+msgstr "Aktif"
+
+#: farm/models/hook.py:51
+msgid "Hooks"
+msgstr "Hooklar"
 
 #: farm/models/job.py:12
 msgid "Started At"
@@ -96,3 +140,15 @@ msgstr "Depo"
 #: farm/models/repository.py:21
 msgid "Repositories"
 msgstr "Depolar"
+
+#: farm/rest/views/bitbucket.py:21
+msgid "Bitbucket hooks are not supported."
+msgstr "Bitbucket hookları desteklenmiyor."
+
+#: farm/rest/views/github.py:39
+msgid "GitHub hook definition not found."
+msgstr "GitHub hook tanımı bulunamadı."
+
+#: farm/rest/views/gitlab.py:21
+msgid "GitLab hooks are not supported."
+msgstr "GitLab hookları desteklenmiyor"

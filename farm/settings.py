@@ -31,12 +31,13 @@ DEBUG = config('DEBUG', False, cast=bool)
 
 HEROKU = config('HEROKU', False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pisifarm.herokuapp.com', ]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pisifarm.herokuapp.com', '.ngrok.io', ]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -164,6 +165,15 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_METADATA_CLASS': 'rest_framework_json_api.metadata.JSONAPIMetadata',
 }
+
+# Django Sites Framework Settings
+
+SITE_ID = 1
+SITE_URL = config('SITE_URL', 'http://localhost:8000', cast=str)
+
+# Hook Settings
+
+VERIFY_GITHUB_HOOKS = config('VERIFY_GITHUB_HOOKS', True, cast=bool)
 
 # Heroku Settings
 

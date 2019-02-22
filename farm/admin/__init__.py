@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from farm.admin.repository import RepositoryAdmin
 from farm.admin.package import PackageAdmin
 from farm.admin.job import JobAdmin
+from farm.admin.hook import HookAdmin
 
 __author__ = 'safaariman'
 
