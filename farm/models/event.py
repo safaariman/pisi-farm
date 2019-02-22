@@ -11,6 +11,9 @@ __author__ = 'safaariman'
 
 
 class Event(Model):
+    """
+    Event model to store data coming from supported external sources like GitHub, GitLab, Bitbucket etc.
+    """
     payload = TextField(verbose_name=_('Payload'))
     meta = TextField(verbose_name=_('Meta'))
     hook = models.ForeignKey(Hook, null=True, on_delete=models.SET_NULL, verbose_name=_('Hook'))

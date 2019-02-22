@@ -14,6 +14,9 @@ __author__ = 'safaariman'
 
 
 class Hook(Model):
+    """
+    Hook model to store hook definitions to receive events from supported external sources.
+    """
     GITHUB = 'GITHUB'
     GITLAB = 'GITLAB'
     BITBUCKET = 'BITBUCKET'
