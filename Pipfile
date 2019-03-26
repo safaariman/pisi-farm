@@ -1,0 +1,25 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+Django = "~=2.0"
+coverage = "*"
+tox = "*"
+
+[packages]
+psycopg2-binary = "*"
+djangorestframework = "*"
+djangorestframework-jwt = "*"
+djangorestframework-jsonapi = "*"
+django-url-filter = "*"
+python-decouple = "*"
+celery = "*"
+gunicorn = "*"
+django-debug-toolbar = "*"
+Django = "~=2.0"
+django_celery_results = "*"
+
+[requires]
+python_version = "3.6"

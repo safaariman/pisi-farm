@@ -1,0 +1,14 @@
+version: '3'
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:management
+    environment:
+      - RABBITMQ_DEFAULT_USER=pisi
+      - RABBITMQ_DEFAULT_PASS=isip
+      - RABBITMQ_DEFAULT_VHOST=farm
+      - RABBITMQ_ERLANG_COOKIE='RKIVSODPOTJYJDZMSUSH'
+    ports:
+      - 15672:15672
+      - 5672:5672
+    restart: on-failure
