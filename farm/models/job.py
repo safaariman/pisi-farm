@@ -2,16 +2,17 @@
 """ Created by Safa Arıman on 2/16/19 """
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django_celery_results.models import TaskResult
 
 from farm.base.model import Model
+from farm.models import Event
 
 __author__ = 'safaariman'
 
 
 class Job(Model):
-    started_at = models.DateTimeField(verbose_name=_('Started At'), null=True, blank=True)
-    finished_at = models.DateTimeField(verbose_name=_('Finished At'), null=True, blank=True)
-    successful = models.NullBooleanField(verbose_name=_('Successful'))
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    task = models.ForeignKey(TaskResult, null=True, to_field='task_id', on_delete=models.SET_NULL)
 
     class Meta:
         db_table = 'job'

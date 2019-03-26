@@ -11,9 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-
-import dj_database_url
-import django_heroku
 from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -29,9 +26,7 @@ SECRET_KEY = config('SECRET_KEY', cast=str)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', False, cast=bool)
 
-HEROKU = config('HEROKU', False, cast=bool)
-
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'pisifarm.herokuapp.com', '.ngrok.io', ]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.ngrok.io', ]
 
 
 # Application definition
@@ -46,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'farm',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +52,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'farm.urls'
@@ -135,6 +130,75 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
+# Logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'verbose',
+            'filters': [
+                'require_debug_false',
+            ],
+        },
+        'syslog': {
+            'class': 'logging.handlers.SysLogHandler',
+            'formatter': 'verbose',
+            'facility': 'user',
+        },
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'logfile': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'farm.log'),
+            'maxBytes': 1024 * 1024 * 20,
+            'backupCount': 0,
+            'formatter': 'verbose',
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '[%(asctime)s] %(process)-5d %(name)s.%(module)s:%(lineno)d %(levelname)-8s %(message)s',
+            'datefmt': '%d-%m-%Y %H:%M:%S'
+        },
+        'simple': {
+            'format': '[%(asctime)s] %(name)s %(module)s %(levelname)s %(message)s',
+            'datefmt': '%d/%b/%Y %H:%M:%S'
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['mail_admins', 'console', 'logfile', ],
+            'level': 'DEBUG',
+            'propagate': True
+        },
+        'django': {
+            'handlers': ['console', 'logfile', ],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+        'django.request': {
+            'handlers': ['mail_admins', 'console', 'logfile', ],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+    }
+}
 
 # Rest Framework
 
@@ -175,8 +239,30 @@ SITE_URL = config('SITE_URL', 'http://localhost:8000', cast=str)
 
 VERIFY_GITHUB_HOOKS = config('VERIFY_GITHUB_HOOKS', True, cast=bool)
 
-# Heroku Settings
+# Celery configurations
 
-if HEROKU:
-    DATABASES['default'] = dj_database_url.config()
-    django_heroku.settings(locals())
+CELERY_BROKER_URL = 'amqp://pisi:isip@localhost:5672/farm'
+CELERY_RESULT_BACKEND = 'django-db'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': '/var/tmp/farm',
+    }
+}
+
+if DEBUG:
+    # Django Debug Toolbar
+    INSTALLED_APPS = INSTALLED_APPS + ['debug_toolbar', ]
+    MIDDLEWARE = MIDDLEWARE + ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
+    INTERNAL_IPS = ('127.0.0.1', )
+else:
+    SECURE_HSTS_SECONDS = 604800
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    X_FRAME_OPTIONS = 'DENY'

@@ -13,4 +13,5 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'farm.settings')
 
 app = Celery('farm')
 app.config_from_object('django.conf:settings', namespace='CELERY')
+app.conf.update(worker_pool_restarts=True, task_track_started=True)
 app.autodiscover_tasks()

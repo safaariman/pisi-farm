@@ -12,7 +12,8 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from farm.models import Hook, Event
+from farm.models import Hook, Event, Job
+from farm.tasks import debug_task
 
 __author__ = 'safaariman'
 
@@ -35,6 +36,12 @@ class GitHubEventAPIView(APIView):
             headers = {header: value for header, value in meta.items() if header.startswith('HTTP')}
             event = Event(payload=json.dumps(payload), meta=json.dumps(headers), hook=hook)
             event.save()
+
+
+
+            job = Job.objects.create(event=event)
+
+            debug_task.delay(job=job.pk)
         except Hook.DoesNotExist:
             raise NotFound(_('GitHub hook definition not found.'))
 

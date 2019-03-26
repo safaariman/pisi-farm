@@ -10,6 +10,6 @@ __author__ = 'safaariman'
 
 
 class JobViewSet(ModelViewSet):
-    queryset = Job.objects.all().order_by('-created_at')
+    queryset = Job.objects.select_related('task', 'event').order_by('-created_at')
     serializer_class = JobSerializer
     filter_class = JobFilterSet
