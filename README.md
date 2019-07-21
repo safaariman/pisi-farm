@@ -5,19 +5,16 @@ Brand new Pisi Build Farm for Pisilinux.
 ## How to install
 
 ```bash
-$ virtualenv -p /usr/bin/python3.6 venv
-$ source venv/bin/activate
-(venv) $ pip install pip-tools
-(venv) $ pip-sync
-(venv) $ python manage.py migrate
-(venv) $ python manage.py loaddata initial_user
-(venv) $ python manage.py compilemessages
+$ pipenv install
+$ pipenv run python manage.py migrate
+$ pipenv run python manage.py loaddata initial_user
+$ pipenv run python manage.py compilemessages
 ```
 
 ## Running the development server
 
 ```bash
-(venv) $ python manage.py runserver
+$ pipenv run python manage.py runserver
 ```
 
 ## Access the development server
