@@ -28,9 +28,7 @@ urlpatterns = [
     path('hooks/github/<str:hash>/', GitHubEventAPIView.as_view()),
     path('hooks/gitlab/<str:hash>/', GitLabEventAPIView.as_view()),
     path('hooks/bitbucket/<str:hash>/', BitbucketEventAPIView.as_view()),
-    static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
-    static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
