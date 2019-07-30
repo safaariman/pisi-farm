@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'farm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('DATABASE_NAME', cast=str),
+        'USER': config('DATABASE_USER', cast=str),
+        'PASSWORD': config('DATABASE_PASSWORD', cast=str),
+        'HOST': config('DATABASE_HOST', '127.0.0.1', cast=str),
+        'PORT': config('DATABASE_PORT', '5432', cast=str),
     }
 }
 
