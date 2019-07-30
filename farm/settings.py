@@ -197,6 +197,12 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': False
         },
+        # Too many debug logs in autoreload module.
+        'django.utils.autoreload': {
+            'handlers': ['console', 'logfile', ],
+            'level': 'INFO',
+            'propagate': False
+        },
     }
 }
 

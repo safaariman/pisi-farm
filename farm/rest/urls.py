@@ -17,6 +17,4 @@ router.register('repositories', RepositoryViewSet)
 router.register('packages', PackageViewSet)
 router.register('hooks', HookViewSet)
 
-urlpatterns = [
-    path('', include(router.urls)),
-]
+urlpatterns = router.urls

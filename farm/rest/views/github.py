@@ -37,8 +37,6 @@ class GitHubEventAPIView(APIView):
             event = Event(payload=json.dumps(payload), meta=json.dumps(headers), hook=hook)
             event.save()
 
-
-
             job = Job.objects.create(event=event)
 
             debug_task.delay(job=job.pk)

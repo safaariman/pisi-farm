@@ -11,8 +11,8 @@ class Repository(Model):
     name = models.CharField(verbose_name=_('Repository Name'), max_length=100)
     url = models.CharField(verbose_name=_('Repository URL'), max_length=250)
     branch = models.CharField(verbose_name=_('Branch'), max_length=200)
-    image = models.CharField(verbose_name=_('Docker Image'), max_length=200)
-    directory = models.CharField(verbose_name=_('Directory'), max_length=500)
+    # image = models.CharField(verbose_name=_('Docker Image'), max_length=200)
+    # directory = models.CharField(verbose_name=_('Directory'), max_length=500)
     enabled = models.BooleanField(verbose_name=_('Enabled'), default=True)
 
     class Meta:
