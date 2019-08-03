@@ -16,7 +16,7 @@ djangorestframework-jsonapi = "*"
 django-url-filter = "*"
 python-decouple = "*"
 celery = "*"
-gunicorn = "*"
+gunicorn = {extras = ["gevent"], version = "*"}
 django-debug-toolbar = "*"
 Django = "~=2.0"
 django_celery_results = "*"
