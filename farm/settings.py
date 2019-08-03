@@ -257,7 +257,13 @@ VERIFY_GITHUB_HOOKS = config('VERIFY_GITHUB_HOOKS', True, cast=bool)
 
 # Celery configurations
 
-CELERY_BROKER_URL = 'amqp://pisi:isip@localhost:5672/farm'
+AMQP_USER = config('AMQP_USER', cast=str)
+AMQP_PASSWORD = config('AMQP_PASSWORD', cast=str)
+AMQP_HOST = config('AMQP_HOST', cast=str)
+AMQP_PORT = config('AMQP_PORT', cast=str)
+AMQP_VHOST = config('AMQP_VHOST', cast=str)
+
+CELERY_BROKER_URL = f'amqp://{AMQP_USER}:{AMQP_PASSWORD}@{AMQP_HOST}:{AMQP_PORT}/{AMQP_VHOST}'
 CELERY_RESULT_BACKEND = 'django-db'
 
 CACHES = {
