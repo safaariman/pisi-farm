@@ -5,6 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 Django = "~=2.0"
+tblib = "*"
 coverage = "*"
 tox = "*"
 

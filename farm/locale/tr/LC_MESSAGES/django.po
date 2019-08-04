@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-22 06:09+0000\n"
+"POT-Creation-Date: 2019-08-04 01:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,67 +29,75 @@ msgstr "Oluşturulma Tarihi"
 msgid "Updated At"
 msgstr "Güncellenme Tarihi"
 
-#: farm/models/event.py:14
+#: farm/models/event.py:17
 msgid "Payload"
 msgstr "Veri"
 
-#: farm/models/event.py:15
+#: farm/models/event.py:18
 msgid "Meta"
 msgstr "Meta"
 
-#: farm/models/event.py:16 farm/models/hook.py:50
+#: farm/models/event.py:19 farm/models/hook.py:74
 msgid "Hook"
 msgstr "Hook"
 
-#: farm/models/event.py:20
+#: farm/models/event.py:26
 msgid "Event"
 msgstr "Olay"
 
-#: farm/models/event.py:21
+#: farm/models/event.py:27
 msgid "Events"
 msgstr "Olaylar"
 
-#: farm/models/hook.py:27
+#: farm/models/hook.py:31
 msgid "Source"
 msgstr "Kaynak"
 
-#: farm/models/hook.py:28
+#: farm/models/hook.py:32
+msgid "The source that this web hook will be used. There are 3 supported sources. GitHub, GitLab and Bitbucket."
+msgstr "Bu web hookun kullanılacağı kaynak uygulama. 3 tane desteklenen kaynak var. GitHub, GitLab and Bitbucket."
+
+#: farm/models/hook.py:36
 msgid "URL Hash"
 msgstr "Karmaşık URL"
 
-#: farm/models/hook.py:29
+#: farm/models/hook.py:37
+msgid "Random generated hash to use in web hook url."
+msgstr "URLde kullanmak için rastgele oluşturulmuş karakter dizisi."
+
+#: farm/models/hook.py:40
 msgid "Secret"
 msgstr "Parola"
 
-#: farm/models/hook.py:30
+#: farm/models/hook.py:41
+msgid "Random generated secret hash to identify the sender to increase the security."
+msgstr "Gönderen kimliğini belirlerken güvenliği arttırmak için kullanılacak rastgele oluşturulmuş karakter dizisi."
+
+#: farm/models/hook.py:44
 msgid "Last Trigger"
 msgstr "Son Tetiklenme"
 
-#: farm/models/hook.py:31
+#: farm/models/hook.py:45
+msgid "The date that the hook recently triggered."
+msgstr "Hookun en son tetiklendiği tarih."
+
+#: farm/models/hook.py:48
 msgid "Active"
 msgstr "Aktif"
 
-#: farm/models/hook.py:51
+#: farm/models/hook.py:48
+msgid "Enable or disable the web hook."
+msgstr "Web hooku aktifleştir ya da pasifleştir."
+
+#: farm/models/hook.py:75
 msgid "Hooks"
 msgstr "Hooklar"
 
-#: farm/models/job.py:12
-msgid "Started At"
-msgstr "Başlama Tarihi"
-
-#: farm/models/job.py:13
-msgid "Finished At"
-msgstr "Bitiş Tarihi"
-
-#: farm/models/job.py:14
-msgid "Successful"
-msgstr "Başarılı"
-
-#: farm/models/job.py:18
+#: farm/models/job.py:19
 msgid "Job"
 msgstr "Görev"
 
-#: farm/models/job.py:19
+#: farm/models/job.py:20
 msgid "Jobs"
 msgstr "Görevler"
 
@@ -121,14 +129,6 @@ msgstr "Depo URL"
 msgid "Branch"
 msgstr "Dal"
 
-#: farm/models/repository.py:14
-msgid "Docker Image"
-msgstr "Docker İmajı"
-
-#: farm/models/repository.py:15
-msgid "Directory"
-msgstr "Dizin"
-
 #: farm/models/repository.py:16
 msgid "Enabled"
 msgstr "Aktif"
@@ -141,14 +141,29 @@ msgstr "Depo"
 msgid "Repositories"
 msgstr "Depolar"
 
-#: farm/rest/views/bitbucket.py:21
-msgid "Bitbucket hooks are not supported."
-msgstr "Bitbucket hookları desteklenmiyor."
+#: farm/rest/views/event.py:44
+#, fuzzy
+#| msgid "GitHub hook definition not found."
+msgid "Hook definition not found."
+msgstr "Hook tanımı bulunamadı."
 
-#: farm/rest/views/github.py:39
-msgid "GitHub hook definition not found."
-msgstr "GitHub hook tanımı bulunamadı."
+#~ msgid "Started At"
+#~ msgstr "Başlama Tarihi"
 
-#: farm/rest/views/gitlab.py:21
-msgid "GitLab hooks are not supported."
-msgstr "GitLab hookları desteklenmiyor"
+#~ msgid "Finished At"
+#~ msgstr "Bitiş Tarihi"
+
+#~ msgid "Successful"
+#~ msgstr "Başarılı"
+
+#~ msgid "Docker Image"
+#~ msgstr "Docker İmajı"
+
+#~ msgid "Directory"
+#~ msgstr "Dizin"
+
+#~ msgid "Bitbucket hooks are not supported."
+#~ msgstr "Bitbucket hookları desteklenmiyor."
+
+#~ msgid "GitLab hooks are not supported."
+#~ msgstr "GitLab hookları desteklenmiyor"

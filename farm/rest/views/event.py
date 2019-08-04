@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-""" Created by Safa Arıman on 2/20/19 """
+""" Created by Safa Arıman on 8/4/19 """
 import json
 
 from django.db.transaction import atomic
@@ -18,7 +18,7 @@ from farm.tasks import debug_task
 __author__ = 'safaariman'
 
 
-class GitHubEventAPIView(APIView):
+class EventAPIView(APIView):
 
     permission_classes = (AllowAny, )
     parser_classes = (JSONParser, )
@@ -26,7 +26,7 @@ class GitHubEventAPIView(APIView):
     @atomic
     def post(self, request, hash, format=None):
         try:
-            hook = Hook.objects.get(source=Hook.GITHUB, url_hash=hash, is_active=True)
+            hook = Hook.objects.get(url_hash=hash, is_active=True)
             hook.last_trigger = timezone.now()
             hook.save()
 
@@ -39,8 +39,8 @@ class GitHubEventAPIView(APIView):
 
             job = Job.objects.create(event=event)
 
-            debug_task.delay(job=job.pk)
+            debug_task.apply_async(job=job.pk)
         except Hook.DoesNotExist:
-            raise NotFound(_('GitHub hook definition not found.'))
+            raise NotFound(_('Hook definition not found.'))
 
         return Response('OK')

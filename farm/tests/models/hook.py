@@ -34,7 +34,7 @@ class HookTestCase(TestCase):
         hook.save()
         self.assertEqual(
             hook.url,
-            urljoin(site_url, '/hooks/{}/{}/'.format('github', 'hash_test')),
+            urljoin(site_url, '/hook/{}/'.format('hash_test')),
             'Hook URL generation has failed.'
         )
 

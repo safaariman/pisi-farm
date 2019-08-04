@@ -18,6 +18,9 @@ class Event(Model):
     meta = TextField(verbose_name=_('Meta'))
     hook = models.ForeignKey(Hook, null=True, on_delete=models.SET_NULL, verbose_name=_('Hook'))
 
+    def __str__(self):
+        return f'{self.hook.get_source_display()} Event'
+
     class Meta:
         db_table = 'event'
         verbose_name = _('Event')
