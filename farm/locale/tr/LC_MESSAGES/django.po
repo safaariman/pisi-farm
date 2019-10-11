@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-04 01:47+0000\n"
+"POT-Creation-Date: 2019-09-13 06:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: farm/admin/__init__.py:13 farm/admin/__init__.py:14
+#: farm/admin/__init__.py:14 farm/admin/__init__.py:15
 msgid "Pisi Farm Administration Console"
 msgstr "Pisi Çiftlik Yönetim Konsolu"
+
+#: farm/apps.py:12
+msgid "Build Farm"
+msgstr "Derleme Çiftliği"
 
 #: farm/base/model.py:10
 msgid "Created At"
@@ -54,8 +58,12 @@ msgid "Source"
 msgstr "Kaynak"
 
 #: farm/models/hook.py:32
-msgid "The source that this web hook will be used. There are 3 supported sources. GitHub, GitLab and Bitbucket."
-msgstr "Bu web hookun kullanılacağı kaynak uygulama. 3 tane desteklenen kaynak var. GitHub, GitLab and Bitbucket."
+msgid ""
+"The source that this web hook will be used. There are 3 supported sources. "
+"GitHub, GitLab and Bitbucket."
+msgstr ""
+"Bu web hookun kullanılacağı kaynak uygulama. 3 tane desteklenen kaynak var. "
+"GitHub, GitLab and Bitbucket."
 
 #: farm/models/hook.py:36
 msgid "URL Hash"
@@ -70,8 +78,11 @@ msgid "Secret"
 msgstr "Parola"
 
 #: farm/models/hook.py:41
-msgid "Random generated secret hash to identify the sender to increase the security."
-msgstr "Gönderen kimliğini belirlerken güvenliği arttırmak için kullanılacak rastgele oluşturulmuş karakter dizisi."
+msgid ""
+"Random generated secret hash to identify the sender to increase the security."
+msgstr ""
+"Gönderen kimliğini belirlerken güvenliği arttırmak için kullanılacak "
+"rastgele oluşturulmuş karakter dizisi."
 
 #: farm/models/hook.py:44
 msgid "Last Trigger"
@@ -93,11 +104,11 @@ msgstr "Web hooku aktifleştir ya da pasifleştir."
 msgid "Hooks"
 msgstr "Hooklar"
 
-#: farm/models/job.py:19
+#: farm/models/job.py:43
 msgid "Job"
 msgstr "Görev"
 
-#: farm/models/job.py:20
+#: farm/models/job.py:44
 msgid "Jobs"
 msgstr "Görevler"
 
